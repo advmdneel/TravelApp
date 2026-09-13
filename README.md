@@ -1,9 +1,9 @@
-# Travel Companion by [Team Name]
+# Travel Companion by Nimosh
 
-**Team:** Muhammad Fuad bin Mohtar, Adam Daniel Ali bin Shamsul Azhar, Muhammad Fahmi Aiman bin Mohd Fauzi
-**Problem Statement:** Travel Planner
-**Video Presentation:** [Unlisted YouTube Link]
-**Presentation Slides:** https://canva.link/f9wfpelol49en3n
+- **Team:** Muhammad Fuad bin Mohtar, Adam Daniel Ali bin Shamsul Azhar, Muhammad Fahmi Aiman bin Mohd Fauzi
+- **Problem Statement:** Travel Planner
+- **Video Presentation:** [Unlisted YouTube Link]
+- **Presentation Slides:** https://canva.link/f9wfpelol49en3n
 
 ## 1. Project Overview
 
@@ -43,7 +43,7 @@ Travel Companion is an AI-powered all-in-one travel app that plans, books, manag
 
 ### 2.2 Ideation Boards
 
-ideation-board.png
+![Ideation Boards](ideation-board.jpg)
 
 This board organises our brainstormed features into seven columns — Plan trip, Booking, Manage trip, During trip, Differentiators, Accessibility & neurodivergent, and a Parking lot for unsorted ideas — colour-coded by category. It shows how features were grouped by *where in the journey* they belong (before the trip, during booking, during travel) rather than by how technically complex they were, which is what led us to prioritise the AI itinerary and alerts system as the connective layer across all of them.
 
@@ -82,11 +82,13 @@ Key screens to embed/link (recommend 4–8):
 
 ### Tech stack
 
+Tech stack
 - **Frontend (mobile):** React Native via Expo — chosen for fast cross-platform iteration (test instantly on a physical phone through Expo Go) without needing separate iOS/Android codebases. Navigation via React Navigation (bottom tabs + native stack).
-- **Frontend (web preview):** Same React Native codebase exported to web via `react-native-web`, deployed as a static site on Vercel — lets reviewers/mentors open the prototype instantly in a browser without installing anything.
-- **Backend / AI:** [Fill in — e.g. planned integration with an LLM API (such as the Anthropic or Gemini API) for the itinerary optimisation and AI assistant; not yet built, currently using mock data to demonstrate the interaction pattern.]
-- **Database:** [Fill in — e.g. planned Supabase/Firebase for storing trips, bookings, and budget entries; chosen for free tier + built-in auth, with the trade-off being [constraint, e.g. cold-start latency or row-level security setup].]
-- **Hosting:** Vercel (web prototype); Expo for native builds/distribution during development.
+- **Frontend (web preview):** Same React Native codebase exported to web via react-native-web, deployed as a static site on Vercel — lets reviewers/mentors open the prototype instantly in a browser without installing anything.
+- **Backend / AI:** Google Gemini API for the AI itinerary optimisation, the travel assistant chat, and the receipt scanner's image-to-data extraction — chosen because it handles both text reasoning (itinerary/budget logic) and vision input (photographed receipts) through one API, and our team has prior experience integrating it in another project. Constraint: free-tier rate limits mean the assistant and receipt scanner can't both be hammered in a live demo without hitting quota, so the demo script paces requests deliberately.
+- **Database: Firebase (Firestore)** for storing trips, itineraries, bookings, and budget entries — chosen for its generous free tier, built-in authentication, and real-time sync (useful for the budget tracker updating live as expenses are added). Constraint: Firestore's NoSQL structure makes category-level budget aggregation (e.g. summing "Food" across a trip) more manual than a relational database would — we handle this with a denormalised per-category running total updated on write, rather than querying and summing on read.
+- **APIs / services:** Booking Hub and Live Flight status use mock data for this prototype, since integrating real flight-status and hotel/flight aggregation (e.g. Amadeus or Skyscanner's API) requires paid-tier access and partner approval that's out of scope for the build phase — a production version would swap in a provider like Amadeus for bookings and AviationStack or FlightAware for live flight status. The Currency feature uses a free tier of exchangerate-api.com for live conversion rates, and Translation uses the Google Cloud Translation API, both chosen for generous free quotas suitable for a demo.
+- **Hosting: Vercel (web prototype); Expo for native builds/distribution during development.
 
 ### Build plan & scope
 
