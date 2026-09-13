@@ -2,7 +2,7 @@
 
 - **Team:** Muhammad Fuad bin Mohtar, Adam Daniel Ali bin Shamsul Azhar, Muhammad Fahmi Aiman bin Mohd Fauzi
 - **Problem Statement:** Travel Planner
-- **Video Presentation:** [Unlisted YouTube Link]
+- **Video Presentation:** https://youtu.be/sql3EjEZcQE
 - **Presentation Slides:** https://canva.link/f9wfpelol49en3n
 
 ## 1. Project Overview
